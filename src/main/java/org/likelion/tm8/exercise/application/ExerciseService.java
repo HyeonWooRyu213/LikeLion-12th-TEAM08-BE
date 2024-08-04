@@ -1,6 +1,5 @@
 package org.likelion.tm8.exercise.application;
 
-<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.exercise.api.dto.request.ExerciseSaveReqDto;
 import org.likelion.tm8.exercise.api.dto.request.ExerciseUpdateReqDto;
@@ -62,7 +61,4 @@ public class ExerciseService {
 
 
     }
-=======
-public class ExerciseService {
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

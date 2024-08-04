@@ -1,6 +1,5 @@
 package org.likelion.tm8.diet.api;
 
-<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.diet.api.dto.request.DietSaveReqDto;
 import org.likelion.tm8.diet.api.dto.request.DietUpdateReqDto;
@@ -23,7 +22,7 @@ public class DietController {
     @PostMapping
     public ResponseEntity<String> dietSave(@RequestBody DietSaveReqDto dietSaveReqDto) {
         dietService.dietSave(dietSaveReqDto);
-        return new ResponseEntity<>("섭취량 저장",HttpStatus.CREATED);
+        return new ResponseEntity<>("섭취량 저장", HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -36,15 +35,12 @@ public class DietController {
     @PatchMapping("/{dietId}")
     public ResponseEntity<String> dietUpdate(@PathVariable("dietId") Long dietId, DietUpdateReqDto dietUpdateReqDto) {
         dietService.dietUpdate(dietId, dietUpdateReqDto);
-        return new ResponseEntity<>("섭취량 수정",HttpStatus.OK);
+        return new ResponseEntity<>("섭취량 수정", HttpStatus.OK);
     }
 
     @DeleteMapping("{dietId}")
     public ResponseEntity<String> dietDelete(@PathVariable("dietId") Long dietId) {
         dietService.dietDelete(dietId);
-        return new ResponseEntity<>("섭취량 삭제",HttpStatus.OK);
+        return new ResponseEntity<>("섭취량 삭제", HttpStatus.OK);
     }
-=======
-public class DietController {
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

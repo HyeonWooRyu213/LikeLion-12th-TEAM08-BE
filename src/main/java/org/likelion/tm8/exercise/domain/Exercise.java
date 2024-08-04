@@ -1,7 +1,6 @@
 package org.likelion.tm8.exercise.domain;
 
 import jakarta.persistence.*;
-<<<<<<< HEAD
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,27 +12,20 @@ import org.springframework.cglib.core.Local;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-=======
 import org.likelion.tm8.today.domain.Today;
 import org.likelion.tm8.user.domain.User;
-
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-<<<<<<< HEAD
 @Getter
 @NoArgsConstructor
-=======
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exercise_id")
     private Long exerciseId;
 
-<<<<<<< HEAD
     // 소모 칼로리
     @Column(name = "caloriesBurned")
     private Long caloriesBurned;
@@ -54,15 +46,12 @@ public class Exercise {
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
-=======
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Today> todayList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-<<<<<<< HEAD
 
     @Builder
     private Exercise(Long exerciseId, Long caloriesBurned, Long duration, String name) {
@@ -86,6 +75,4 @@ public class Exercise {
         this.endTime = LocalDateTime.now();
         this.duration = Duration.between(startTime, endTime).getSeconds();
     }
-=======
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

@@ -1,13 +1,10 @@
 package org.likelion.tm8.diet.domain;
 
 import jakarta.persistence.*;
-<<<<<<< HEAD
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.likelion.tm8.diet.api.dto.request.DietUpdateReqDto;
-=======
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 import org.likelion.tm8.dietLog.domain.DietLog;
 import org.likelion.tm8.today.domain.Today;
 import org.likelion.tm8.user.domain.User;
@@ -16,18 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-<<<<<<< HEAD
 @Getter
 @NoArgsConstructor
-=======
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 public class Diet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "diet_id")
     private Long dietId;
 
-<<<<<<< HEAD
     // 섭취한 칼로리
     @Column(name = "kcal")
     private Long kcal;
@@ -44,8 +37,6 @@ public class Diet {
     @Column(name = "protein")
     private Long protein;
 
-=======
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
     @OneToMany(mappedBy = "diet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DietLog> dietLogList = new ArrayList<>();
 
@@ -55,7 +46,6 @@ public class Diet {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-<<<<<<< HEAD
 
     @Builder
     private Diet(Long dietId, Long kcal, Long carb, Long fat, Long protein, User user) {
@@ -73,8 +63,4 @@ public class Diet {
         this.fat = dietUpdateReqDto.fat();
         this.protein = dietUpdateReqDto.protein();
     }
-
-
-=======
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

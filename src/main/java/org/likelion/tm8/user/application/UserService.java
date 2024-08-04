@@ -1,6 +1,5 @@
 package org.likelion.tm8.user.application;
 
-<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.user.api.dto.request.UserSaveReqDto;
 import org.likelion.tm8.user.api.dto.request.UserUpdateReqDto;
@@ -59,8 +58,4 @@ public class UserService {
 
         return UserInfoResDto.from(user);
     }
-
-=======
-public class UserService {
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

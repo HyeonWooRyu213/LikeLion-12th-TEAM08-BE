@@ -1,6 +1,5 @@
 package org.likelion.tm8.dietLog.application;
 
-<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.dietLog.api.dto.request.DietLogSaveReqDto;
 import org.likelion.tm8.dietLog.api.dto.request.DietLogUpdateReqDto;
@@ -48,7 +47,7 @@ public class DietLogService {
     @Transactional
     public DietLogInfoResDto dietLogUpdate(Long dietLogId, DietLogUpdateReqDto dietLogUpdateReqDto) {
         DietLog dietLog = dietLogRepository.findById(dietLogId)
-                .orElseThrow(()-> new IllegalArgumentException("정보 수정"));
+                .orElseThrow(() -> new IllegalArgumentException("정보 수정"));
 
         dietLog.update(dietLogUpdateReqDto);
 
@@ -58,13 +57,10 @@ public class DietLogService {
     @Transactional
     public DietLogInfoResDto dietLogDelete(Long dietLogId) {
         DietLog dietLog = dietLogRepository.findById(dietLogId)
-                .orElseThrow(()-> new IllegalArgumentException("정보 삭제"));
+                .orElseThrow(() -> new IllegalArgumentException("정보 삭제"));
 
         dietLogRepository.delete(dietLog);
 
         return DietLogInfoResDto.from(dietLog);
     }
-=======
-public class DietLogService {
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

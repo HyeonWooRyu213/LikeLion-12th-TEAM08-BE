@@ -1,6 +1,6 @@
 package org.likelion.tm8.diet.application;
 
-<<<<<<< HEAD
+
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.diet.api.dto.request.DietSaveReqDto;
 import org.likelion.tm8.diet.api.dto.request.DietUpdateReqDto;
@@ -42,7 +42,7 @@ public class DietService {
     @Transactional
     public DietInfoResDto dietUpdate(Long dietId, DietUpdateReqDto dietUpdateReqDto) {
         Diet diet = dietRepository.findById(dietId)
-                .orElseThrow(()-> new IllegalArgumentException("정보 없음"));
+                .orElseThrow(() -> new IllegalArgumentException("정보 없음"));
 
         diet.update(dietUpdateReqDto);
         return DietInfoResDto.from(diet);
@@ -51,13 +51,10 @@ public class DietService {
     @Transactional
     public DietInfoResDto dietDelete(Long dietId) {
         Diet diet = dietRepository.findById(dietId)
-                .orElseThrow(()-> new IllegalArgumentException("정보 없음"));
+                .orElseThrow(() -> new IllegalArgumentException("정보 없음"));
 
         dietRepository.delete(diet);
 
         return DietInfoResDto.from(diet);
     }
-=======
-public class DietService {
->>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }
