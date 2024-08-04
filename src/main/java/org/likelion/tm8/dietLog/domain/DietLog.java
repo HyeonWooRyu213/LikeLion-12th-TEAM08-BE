@@ -1,6 +1,7 @@
 package org.likelion.tm8.dietLog.domain;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,18 @@ import org.likelion.tm8.dietLog.api.dto.request.DietLogUpdateReqDto;
 @Entity
 @Getter
 @NoArgsConstructor
+=======
+import org.likelion.tm8.diet.domain.Diet;
+
+@Entity
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 public class DietLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dietLog_id")
     private Long dietLogId;
 
+<<<<<<< HEAD
     // 식사 메뉴
     @Column(name = "menu")
     private String menu;
@@ -74,4 +81,9 @@ public class DietLog {
         this.protein = dietLogUpdateReqDto.protein();
     }
 
+=======
+    @ManyToOne
+    @JoinColumn(name = "diet_id")
+    private Diet diet;
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

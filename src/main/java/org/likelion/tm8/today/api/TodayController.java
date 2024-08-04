@@ -1,5 +1,6 @@
 package org.likelion.tm8.today.api;
 
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.today.api.request.TodaySaveReqDto;
 import org.likelion.tm8.today.api.response.TodayInfoResDto;
@@ -31,4 +32,7 @@ public class TodayController {
     }
 
 
+=======
+public class TodayController {
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

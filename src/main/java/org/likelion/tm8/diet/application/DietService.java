@@ -1,5 +1,6 @@
 package org.likelion.tm8.diet.application;
 
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.diet.api.dto.request.DietSaveReqDto;
 import org.likelion.tm8.diet.api.dto.request.DietUpdateReqDto;
@@ -56,4 +57,7 @@ public class DietService {
 
         return DietInfoResDto.from(diet);
     }
+=======
+public class DietService {
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

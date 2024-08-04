@@ -1,5 +1,6 @@
 package org.likelion.tm8.today.application;
 
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.diet.domain.repository.DietRepository;
 import org.likelion.tm8.exercise.domain.repository.ExerciseRepository;
@@ -53,4 +54,7 @@ public class TodayService {
 
         return TodayInfoResDto.from(today);
     }
+=======
+public class TodayService {
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

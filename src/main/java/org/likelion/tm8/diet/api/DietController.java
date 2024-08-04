@@ -1,5 +1,6 @@
 package org.likelion.tm8.diet.api;
 
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.diet.api.dto.request.DietSaveReqDto;
 import org.likelion.tm8.diet.api.dto.request.DietUpdateReqDto;
@@ -43,4 +44,7 @@ public class DietController {
         dietService.dietDelete(dietId);
         return new ResponseEntity<>("섭취량 삭제",HttpStatus.OK);
     }
+=======
+public class DietController {
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }

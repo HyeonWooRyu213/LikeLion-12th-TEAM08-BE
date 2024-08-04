@@ -2,6 +2,7 @@ package org.likelion.tm8.today.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+<<<<<<< HEAD
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,14 @@ import org.likelion.tm8.user.domain.User;
 
 @Entity
 @Getter
+=======
+import lombok.NoArgsConstructor;
+import org.likelion.tm8.diet.domain.Diet;
+import org.likelion.tm8.exercise.domain.Exercise;
+import org.likelion.tm8.user.domain.User;
+
+@Entity
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Today {
 
@@ -31,6 +40,7 @@ public class Today {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
+<<<<<<< HEAD
 
     // 섭취한 영양성분
     private Long kcal;
@@ -62,3 +72,6 @@ public class Today {
     }
 
 }
+=======
+}
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e

@@ -29,7 +29,7 @@ public class DietLogController {
     public ResponseEntity<DietLogListResDto> dietLogFindAll() {
         List<DietLogInfoResDto> dietLogs = dietLogService.dietLogFindAll();
         DietLogListResDto dietLogListResDto = DietLogListResDto.from(dietLogs);
-        return new ResponseEntity<>(dietLogListResDto,HttpStatus.OK);
+        return new ResponseEntity<>(dietLogListResDto, HttpStatus.OK);
     }
 
     @PatchMapping("/{dietLogId}")
@@ -41,6 +41,6 @@ public class DietLogController {
     @DeleteMapping("/{dietLogId}")
     public ResponseEntity<String> dietLogDelete(@PathVariable("dietLogId") Long dietLogId) {
         dietLogService.dietLogDelete(dietLogId);
-        return new ResponseEntity<>("정보 삭제",HttpStatus.OK);
+        return new ResponseEntity<>("정보 삭제", HttpStatus.OK);
     }
 }

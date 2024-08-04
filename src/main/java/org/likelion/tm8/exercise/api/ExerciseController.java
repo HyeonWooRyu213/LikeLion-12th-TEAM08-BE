@@ -1,5 +1,6 @@
 package org.likelion.tm8.exercise.api;
 
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.likelion.tm8.exercise.api.dto.request.ExerciseSaveReqDto;
 import org.likelion.tm8.exercise.api.dto.request.ExerciseUpdateReqDto;
@@ -38,4 +39,7 @@ public class ExerciseController {
         exerciseService.exerciseUpdate(exerciseId,exerciseUpdateReqDto);
         return new ResponseEntity<>("운동 수정",HttpStatus.OK);
     }
+=======
+public class ExerciseController {
+>>>>>>> 9ebebefa0296ea18f78e38b4d3f5a7c4aef7409e
 }
