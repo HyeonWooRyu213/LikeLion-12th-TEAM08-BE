@@ -1,4 +1,8 @@
 package org.likelion.tm8.today.domain.repository;
 
-public interface TodayRepository {
+import org.likelion.tm8.today.domain.Today;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TodayRepository extends JpaRepository<Today, Long> {
+
 }

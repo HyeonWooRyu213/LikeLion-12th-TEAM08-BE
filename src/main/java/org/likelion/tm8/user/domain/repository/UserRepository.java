@@ -1,4 +1,8 @@
 package org.likelion.tm8.user.domain.repository;
 
-public interface UserRepository {
+import org.likelion.tm8.user.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
 }
