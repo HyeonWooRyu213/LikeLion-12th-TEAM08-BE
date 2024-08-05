@@ -10,6 +10,8 @@ import org.likelion.tm8.user.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -31,26 +33,41 @@ public class AuthLoginService {
     private String GOOGLE_CLIENT_SECRET;
 
     private final String GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
-    private final String GOOGLE_REDIRECT_URI = "http://localhost:8080/login/oauth2/code/google";
+    private final String GOOGLE_REDIRECT_URI = "http://localhost:8080/callback";
 
     private final UserRepository userRepository;
     private final TokenProvider tokenProvider;
 
     public String getGoogleAccessToken(String code) {
         RestTemplate restTemplate = new RestTemplate();
-        Map<String, String> params = Map.of(
-                "code", code,
-                "scope", "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-                "client_id", GOOGLE_CLIENT_ID,
-                "client_secret", GOOGLE_CLIENT_SECRET,
-                "redirect_uri", GOOGLE_REDIRECT_URI,
-                "grant_type", "authorization_code"
-        );
+//        Map<String, String> params = Map.of(
+//                "code", code,
+//                "scope", "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+//                "client_id", GOOGLE_CLIENT_ID,
+//                "client_secret", GOOGLE_CLIENT_SECRET,
+//                "redirect_uri", GOOGLE_REDIRECT_URI,
+//                "grant_type", "authorization_code"
+//        );
 
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(GOOGLE_TOKEN_URL, params, String.class);
+//        ResponseEntity<String> responseEntity = restTemplate.postForEntity(GOOGLE_TOKEN_URL, params, String.class);
 
-        if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            String json = responseEntity.getBody();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("client_id", GOOGLE_CLIENT_ID);
+        params.add("client_secret", GOOGLE_CLIENT_SECRET);
+        params.add("grant_type", "authorization_code");
+        params.add("code", code);
+        params.add("redirect_uri", GOOGLE_REDIRECT_URI);
+
+        HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers);
+
+        ResponseEntity<String> entity = null;
+        entity = restTemplate.exchange(GOOGLE_TOKEN_URL, HttpMethod.POST, httpEntity, String.class);
+
+        if (entity.getStatusCode().is2xxSuccessful()) {
+            String json = entity.getBody();
             Gson gson = new Gson();
 
             return gson.fromJson(json, Token.class)
