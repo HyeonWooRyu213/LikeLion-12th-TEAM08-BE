@@ -21,19 +21,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Long userId;
+    private Long Id;
 
     @Column(name = "email")
     private String email;
-
-    @Column(name = "password")
-    private String pw;
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "age")
     private int age;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "height")
+    private int height;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Diet> dietList = new ArrayList<>();
@@ -48,17 +51,17 @@ public class User {
     private List<Weight> weightList = new ArrayList<>();
 
     @Builder
-    private User(Long userId, String email, String pw, String name, int age) {
-        this.userId = userId;
+    private User(Long Id, String email, String name, int age, String gender, int height) {
+        this.Id = Id;
         this.email = email;
-        this.pw = pw;
         this.name = name;
         this.age = age;
+        this.gender = gender;
+        this.height = height;
     }
 
     public void update(UserUpdateReqDto userUpdateReqDto) {
         this.email = userUpdateReqDto.email();
-        this.pw = userUpdateReqDto.pw();
         this.name = userUpdateReqDto.name();
         this.age = userUpdateReqDto.age();
     }

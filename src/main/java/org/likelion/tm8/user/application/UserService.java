@@ -22,10 +22,12 @@ public class UserService {
 
     @Transactional
     public void userSave(UserSaveReqDto userSaveReqDto) {
+        if (userRepository.existsByEmail(userSaveReqDto.email())) {
+            throw new IllegalArgumentException("중복된 이메일입니다.");
+        }
         User user = User.builder()
                 .email(userSaveReqDto.email())
                 .name(userSaveReqDto.name())
-                .pw(userSaveReqDto.pw())
                 .age(userSaveReqDto.age())
                 .build();
 
