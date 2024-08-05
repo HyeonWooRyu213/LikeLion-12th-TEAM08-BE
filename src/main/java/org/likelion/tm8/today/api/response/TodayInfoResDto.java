@@ -18,7 +18,7 @@ public record TodayInfoResDto(
     public static TodayInfoResDto from(Today today) {
         return TodayInfoResDto.builder()
                 .todayId(today.getTodayId())
-                .userId(today.getUser().getUserId())
+                .userId(today.getUser().getId())
                 .dietId(today.getDiet().getDietId())
                 .exerciseId(today.getExercise().getExerciseId())
                 .build();

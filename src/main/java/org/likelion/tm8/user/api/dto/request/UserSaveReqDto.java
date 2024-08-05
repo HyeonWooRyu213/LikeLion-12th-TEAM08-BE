@@ -4,6 +4,8 @@ public record UserSaveReqDto(
         String email,
         String name,
         String pw,
-        int age
+        String gender,
+        int age,
+        int height
 ) {
 }

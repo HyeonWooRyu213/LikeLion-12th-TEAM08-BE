@@ -8,14 +8,18 @@ public record UserInfoResDto(
     Long userId,
     String email,
     String name,
-    int age
+    String gender,
+    int age,
+    int height
 ) {
     public static UserInfoResDto from(User user) {
         return UserInfoResDto.builder()
-                .userId(user.getUserId())
+                .userId(user.getId())
                 .email(user.getEmail())
                 .name(user.getName())
+                .gender(user.getGender())
                 .age(user.getAge())
+                .height(user.getHeight())
                 .build();
     }
 }
