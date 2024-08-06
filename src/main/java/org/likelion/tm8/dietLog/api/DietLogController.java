@@ -20,7 +20,7 @@ public class DietLogController {
     private final DietLogService dietLogService;
 
     @PostMapping
-    public ResponseEntity<String> dietLogSave(DietLogSaveReqDto dietLogSaveReqDto) {
+    public ResponseEntity<String> dietLogSave(@RequestBody DietLogSaveReqDto dietLogSaveReqDto) {
         dietLogService.dietLogSave(dietLogSaveReqDto);
         return new ResponseEntity<>("정보저장 완료", HttpStatus.CREATED);
     }

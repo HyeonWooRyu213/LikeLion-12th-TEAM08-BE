@@ -1,13 +1,16 @@
 package org.likelion.tm8.today.application;
 
 import lombok.RequiredArgsConstructor;
+import org.likelion.tm8.diet.domain.Diet;
 import org.likelion.tm8.diet.domain.repository.DietRepository;
+import org.likelion.tm8.exercise.domain.Exercise;
 import org.likelion.tm8.exercise.domain.repository.ExerciseRepository;
 import org.likelion.tm8.today.api.request.TodaySaveReqDto;
 import org.likelion.tm8.today.api.request.TodayUpdateReqDto;
 import org.likelion.tm8.today.api.response.TodayInfoResDto;
 import org.likelion.tm8.today.domain.Today;
 import org.likelion.tm8.today.domain.repository.TodayRepository;
+import org.likelion.tm8.user.domain.User;
 import org.likelion.tm8.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,12 +29,23 @@ public class TodayService {
 
     @Transactional
     public void todaySave(TodaySaveReqDto todaySaveReqDto) {
+        User user = userRepository.findById(todaySaveReqDto.userId())
+                .orElseThrow(()-> new IllegalArgumentException("회원 없음"));
+
+        Diet diet = dietRepository.findById(todaySaveReqDto.dietId())
+                .orElseThrow(()-> new IllegalArgumentException("식단 없음"));
+
+        Exercise exercise = exerciseRepository.findById(todaySaveReqDto.exerciseId())
+                .orElseThrow(()-> new IllegalArgumentException("운동 없음"));
+
         Today today = Today.builder()
-                .kcal(todaySaveReqDto.kcal())
-                .carb(todaySaveReqDto.carb())
-                .fat(todaySaveReqDto.fat())
-                .protein(todaySaveReqDto.Protein())
-                .duration(todaySaveReqDto.duration())
+                .kcal(diet.getKcal())
+                .carb(diet.getCarb())
+                .fat(diet.getFat())
+                .protein(diet.getProtein())
+                .user(user)
+                .exercise(exercise)
+                .diet(diet)
                 .build();
 
         todayRepository.save(today);
@@ -42,15 +56,5 @@ public class TodayService {
         return todays.stream()
                 .map(TodayInfoResDto::from)
                 .collect(Collectors.toList());
-    }
-
-    @Transactional
-    public TodayInfoResDto todayUpdate(Long todayId, TodayUpdateReqDto todayUpdateReqDto) {
-        Today today = todayRepository.findById(todayId)
-                .orElseThrow(()-> new IllegalArgumentException("오늘 정보 수정"));
-
-        today.update(todayUpdateReqDto);
-
-        return TodayInfoResDto.from(today);
     }
 }

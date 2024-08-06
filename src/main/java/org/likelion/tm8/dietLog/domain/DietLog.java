@@ -23,7 +23,7 @@ public class DietLog {
 
     // 단식 여부
     @Column(name = "pass")
-    private boolean pass;
+    private Boolean pass;
 
     // 물 섭취량
     @Column(name = "water")
@@ -42,15 +42,23 @@ public class DietLog {
     private Diet diet;
 
     // 섭취 영양성분
+    @Column(name = "kcal")
     private Long kcal;
+
+    @Column(name = "carb")
     private Long carb;
+
+    @Column(name = "fat")
     private Long fat;
+
+    @Column(name = "protein")
     private Long protein;
 
 
     @Builder
-    private DietLog(Long dietLogId, String menu, boolean pass, Long water, String supplements, String particulars, Long kcal, Long carb, Long fat, Long protein) {
+    private DietLog(Long dietLogId, Diet diet, String menu, Boolean pass, Long water, String supplements, String particulars, Long kcal, Long carb, Long fat, Long protein) {
         this.dietLogId = dietLogId;
+        this.diet = diet;
         this.menu = menu;
         this.pass = pass;
         this.water = water;

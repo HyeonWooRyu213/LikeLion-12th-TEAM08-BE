@@ -7,6 +7,8 @@ import org.likelion.tm8.diet.api.dto.request.DietUpdateReqDto;
 import org.likelion.tm8.diet.api.dto.response.DietInfoResDto;
 import org.likelion.tm8.diet.domain.Diet;
 import org.likelion.tm8.diet.domain.repository.DietRepository;
+import org.likelion.tm8.user.domain.User;
+import org.likelion.tm8.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,14 +21,19 @@ import java.util.stream.Collectors;
 public class DietService {
 
     private final DietRepository dietRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     public void dietSave(DietSaveReqDto dietSaveReqDto) {
+        User user = userRepository.findById(dietSaveReqDto.userId())
+                .orElseThrow(()-> new IllegalArgumentException("회원 없음"));
+
         Diet diet = Diet.builder()
                 .kcal(dietSaveReqDto.kcal())
                 .carb(dietSaveReqDto.carb())
                 .fat(dietSaveReqDto.fat())
                 .protein(dietSaveReqDto.protein())
+                .user(user)
                 .build();
 
         dietRepository.save(diet);

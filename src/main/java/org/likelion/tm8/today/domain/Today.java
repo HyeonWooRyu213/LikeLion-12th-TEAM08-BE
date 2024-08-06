@@ -45,21 +45,13 @@ public class Today {
     @Builder
     private Today(User user, Diet diet, Exercise exercise, Long kcal, Long carb, Long fat, Long protein, Long duration) {
         this.user = user;
-        this.diet = diet;
         this.exercise = exercise;
+        this.diet = diet;
         this.kcal = diet.getKcal();
         this.carb = diet.getCarb();
         this.fat = diet.getFat();
         this.protein = diet.getProtein();
         this.duration = exercise.getDuration();
-    }
-
-    public void update(TodayUpdateReqDto todayUpdateReqDto) {
-        this.kcal = todayUpdateReqDto.kcal();
-        this.carb = todayUpdateReqDto.carb();
-        this.fat = todayUpdateReqDto.fat();
-        this.protein = todayUpdateReqDto.Protein();
-        this.duration = todayUpdateReqDto.duration();
     }
 
 }

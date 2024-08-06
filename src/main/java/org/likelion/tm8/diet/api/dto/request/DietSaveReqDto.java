@@ -4,6 +4,7 @@ public record DietSaveReqDto(
         Long kcal,
         Long carb,
         Long fat,
-        Long protein
+        Long protein,
+        Long userId
 ) {
 }

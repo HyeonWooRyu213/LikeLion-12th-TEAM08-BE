@@ -16,6 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name = "USERS")
 public class User {
 
     @Id
@@ -26,7 +27,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "passwords")
     private String pw;
 
     @Column(name = "name")

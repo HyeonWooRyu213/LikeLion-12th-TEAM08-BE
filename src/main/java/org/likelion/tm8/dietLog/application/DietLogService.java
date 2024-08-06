@@ -1,11 +1,14 @@
 package org.likelion.tm8.dietLog.application;
 
 import lombok.RequiredArgsConstructor;
+import org.likelion.tm8.diet.domain.Diet;
+import org.likelion.tm8.diet.domain.repository.DietRepository;
 import org.likelion.tm8.dietLog.api.dto.request.DietLogSaveReqDto;
 import org.likelion.tm8.dietLog.api.dto.request.DietLogUpdateReqDto;
 import org.likelion.tm8.dietLog.api.dto.response.DietLogInfoResDto;
 import org.likelion.tm8.dietLog.domain.DietLog;
 import org.likelion.tm8.dietLog.domain.repository.DietLogRepository;
+import org.likelion.tm8.user.domain.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +21,16 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class DietLogService {
     private final DietLogRepository dietLogRepository;
+    private final DietRepository dietRepository;
 
     @Transactional
     public void dietLogSave(DietLogSaveReqDto dietLogSaveReqDto) {
+        Diet diet = dietRepository.findById(dietLogSaveReqDto.dietId())
+                .orElseThrow(()-> new IllegalArgumentException("회원 없음"));
+
         DietLog dietLog = DietLog.builder()
-                .dietLogId(dietLogSaveReqDto.dietId())
+
+                .diet(diet)
                 .menu(dietLogSaveReqDto.menu())
                 .pass(dietLogSaveReqDto.pass())
                 .water(dietLogSaveReqDto.water())

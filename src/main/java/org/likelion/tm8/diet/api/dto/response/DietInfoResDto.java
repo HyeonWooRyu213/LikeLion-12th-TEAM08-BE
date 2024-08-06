@@ -9,7 +9,8 @@ public record DietInfoResDto(
         Long kcal,
         Long carb,
         Long fat,
-        Long protein
+        Long protein,
+        Long userId
 ) {
     public static DietInfoResDto from(Diet diet) {
         return DietInfoResDto.builder()
@@ -18,6 +19,7 @@ public record DietInfoResDto(
                 .carb(diet.getCarb())
                 .fat(diet.getFat())
                 .protein(diet.getProtein())
+                .userId(diet.getUser().getUserId())
                 .build();
     }
 }

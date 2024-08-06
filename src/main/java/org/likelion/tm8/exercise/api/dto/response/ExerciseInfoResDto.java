@@ -8,7 +8,8 @@ public record ExerciseInfoResDto(
         Long exerciseId,
         String name,
         Long caloriesBurned,
-        Long duration
+        Long duration,
+        Long userId
 ) {
     public static ExerciseInfoResDto from(Exercise exercise) {
         return ExerciseInfoResDto.builder()
@@ -16,6 +17,7 @@ public record ExerciseInfoResDto(
                 .name(exercise.getName())
                 .caloriesBurned(exercise.getCaloriesBurned())
                 .duration(exercise.getDuration())
+                .userId(exercise.getUser().getUserId())
                 .build();
     }
 }

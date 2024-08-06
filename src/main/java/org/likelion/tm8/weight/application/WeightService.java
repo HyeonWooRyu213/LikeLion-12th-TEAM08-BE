@@ -32,6 +32,8 @@ public class WeightService {
                 .condition(weightSaveReqDto.condition())
                 .user(user)
                 .build();
+
+        weightRepository.save(weight);
     }
 
     public WeightInfoResDto weightFindOne(Long weightId) {

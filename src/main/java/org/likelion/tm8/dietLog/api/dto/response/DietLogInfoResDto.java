@@ -7,7 +7,7 @@ import org.likelion.tm8.dietLog.domain.DietLog;
 public record DietLogInfoResDto(
         Long dietLogId,
         String menu,
-        boolean pass,
+        Boolean pass,
         Long water,
         String supplements,
         String particulars,
@@ -21,10 +21,10 @@ public record DietLogInfoResDto(
         return DietLogInfoResDto.builder()
                 .dietLogId(dietLog.getDietLogId())
                 .menu(dietLog.getMenu())
-                .pass(dietLog.isPass())
+                .pass(dietLog.getPass())
                 .water(dietLog.getWater())
                 .particulars(dietLog.getParticulars())
-                .dietId(dietLog.getDiet().getDietId())
+                .dietId(dietLog.getDietLogId())
                 .kcal(dietLog.getKcal())
                 .carb(dietLog.getCarb())
                 .fat(dietLog.getFat())

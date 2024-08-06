@@ -7,6 +7,8 @@ import org.likelion.tm8.exercise.api.dto.response.ExerciseInfoResDto;
 import org.likelion.tm8.exercise.api.dto.response.ExerciseListResDto;
 import org.likelion.tm8.exercise.domain.Exercise;
 import org.likelion.tm8.exercise.domain.repository.ExerciseRepository;
+import org.likelion.tm8.user.domain.User;
+import org.likelion.tm8.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,13 +22,18 @@ import java.util.stream.Collectors;
 public class ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     public void exerciseSave(ExerciseSaveReqDto exerciseSaveReqDto) {
+        User user = userRepository.findById(exerciseSaveReqDto.userId())
+                .orElseThrow(()-> new IllegalArgumentException("회원 없음"));
+
         Exercise exercise = Exercise.builder()
                 .name(exerciseSaveReqDto.name())
                 .caloriesBurned(exerciseSaveReqDto.caloriesBurned())
                 .duration(exerciseSaveReqDto.duration())
+                .user(user)
                 .build();
 
         exerciseRepository.save(exercise);

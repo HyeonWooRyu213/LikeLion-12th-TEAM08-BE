@@ -54,11 +54,12 @@ public class Exercise {
     private User user;
 
     @Builder
-    private Exercise(Long exerciseId, Long caloriesBurned, Long duration, String name) {
+    private Exercise(Long exerciseId, Long caloriesBurned, Long duration, String name, User user) {
         this.exerciseId = exerciseId;
         this.caloriesBurned = caloriesBurned;
         this.duration = duration;
         this.name = name;
+        this.user = user;
     }
 
     public void update(ExerciseUpdateReqDto exerciseUpdateReqDto) {

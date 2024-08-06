@@ -12,7 +12,7 @@ public record TodayInfoResDto(
         Long kcal,
         Long carb,
         Long fat,
-        Long Protein,
+        Long protein,
         Long duration
 ) {
     public static TodayInfoResDto from(Today today) {
@@ -21,6 +21,10 @@ public record TodayInfoResDto(
                 .userId(today.getUser().getUserId())
                 .dietId(today.getDiet().getDietId())
                 .exerciseId(today.getExercise().getExerciseId())
+                .kcal(today.getDiet().getKcal())
+                .carb(today.getDiet().getCarb())
+                .fat(today.getDiet().getFat())
+                .protein(today.getDiet().getProtein())
                 .build();
     }
 
