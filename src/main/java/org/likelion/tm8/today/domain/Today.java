@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.likelion.tm8.diet.domain.Diet;
 import org.likelion.tm8.exercise.domain.Exercise;
-import org.likelion.tm8.today.api.request.TodayUpdateReqDto;
 import org.likelion.tm8.user.domain.User;
 
 

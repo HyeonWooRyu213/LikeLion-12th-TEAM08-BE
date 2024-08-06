@@ -13,7 +13,7 @@ public record WeightInfoResDto(
         return WeightInfoResDto.builder()
                 .weightId(weight.getWeightId())
                 .weight(weight.getWeight())
-                .userId(weight.getUser().getUserId())
+                .userId(weight.getUser().getId())
                 .build();
     }
 }

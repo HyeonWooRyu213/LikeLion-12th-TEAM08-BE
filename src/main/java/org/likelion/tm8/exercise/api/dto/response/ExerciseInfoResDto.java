@@ -17,7 +17,7 @@ public record ExerciseInfoResDto(
                 .name(exercise.getName())
                 .caloriesBurned(exercise.getCaloriesBurned())
                 .duration(exercise.getDuration())
-                .userId(exercise.getUser().getUserId())
+                .userId(exercise.getUser().getId())
                 .build();
     }
 }

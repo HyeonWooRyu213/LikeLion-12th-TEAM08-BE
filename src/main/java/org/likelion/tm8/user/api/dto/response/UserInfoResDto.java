@@ -9,15 +9,19 @@ public record UserInfoResDto(
     String email,
     String pw,
     String name,
-    int age
+    String gender,
+    int age,
+    int height
 ) {
     public static UserInfoResDto from(User user) {
         return UserInfoResDto.builder()
-                .userId(user.getUserId())
+                .userId(user.getId())
                 .email(user.getEmail())
                 .pw((user.getPw()))
                 .name(user.getName())
+                .gender(user.getGender())
                 .age(user.getAge())
+                .height(user.getHeight())
                 .build();
     }
 }

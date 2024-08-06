@@ -13,7 +13,7 @@ public record ConditionInfoResDto(
         return ConditionInfoResDto.builder()
                 .weightId(weight.getWeightId())
                 .condition(weight.getCondition())
-                .userId(weight.getUser().getUserId())
+                .userId(weight.getUser().getId())
                 .build();
     }
 }

@@ -6,7 +6,6 @@ import org.likelion.tm8.diet.domain.repository.DietRepository;
 import org.likelion.tm8.exercise.domain.Exercise;
 import org.likelion.tm8.exercise.domain.repository.ExerciseRepository;
 import org.likelion.tm8.today.api.request.TodaySaveReqDto;
-import org.likelion.tm8.today.api.request.TodayUpdateReqDto;
 import org.likelion.tm8.today.api.response.TodayInfoResDto;
 import org.likelion.tm8.today.domain.Today;
 import org.likelion.tm8.today.domain.repository.TodayRepository;

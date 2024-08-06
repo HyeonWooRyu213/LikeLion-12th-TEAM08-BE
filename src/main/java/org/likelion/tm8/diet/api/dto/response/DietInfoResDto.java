@@ -19,7 +19,7 @@ public record DietInfoResDto(
                 .carb(diet.getCarb())
                 .fat(diet.getFat())
                 .protein(diet.getProtein())
-                .userId(diet.getUser().getUserId())
+                .userId(diet.getUser().getId())
                 .build();
     }
 }
